@@ -40,17 +40,19 @@ def download_file(filename):
 
 """
 #index
+# def index():
+#     if not session.get('logged_in'):
+#         return render_template('login.html')
+#     elif session['username']=='darsh':
+#         meds =  user.find_one({'username':'darsh'})['meds']
+#         return(render_template('index-p.html', username=session['username'], meds = meds)) #medicine table 
+#     elif session['username']=='doctor':
+#         pt = user.find_one({'username':'darsh'})
+#         meds =  pt['meds']
+#         return(render_template('index-d.html', username=session['username'], meds = meds, pt=pt)) #medicines and paitent detailss 
 @app.route('/')
 def index():
-    if not session.get('logged_in'):
-        return render_template('login.html')
-    elif session['username']=='darsh':
-        meds =  user.find_one({'username':'darsh'})['meds']
-        return(render_template('index-p.html', username=session['username'], meds = meds)) #medicine table 
-    elif session['username']=='doctor':
-        pt = user.find_one({'username':'darsh'})
-        meds =  pt['meds']
-        return(render_template('index-d.html', username=session['username'], meds = meds, pt=pt)) #medicines and paitent detailss 
+    return(render_template('index.html'))
 
 
 #P2P Chat
