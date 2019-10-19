@@ -93,105 +93,48 @@
               </div>
             </div>
 
-            <div class="appointment-wrap">
-              <section class="appointment-group">
-                <div class="date-bar">
-                  <p>Upcoming Appointments. <span class="appointment-number">Next appointment in 20 minutes.</span></p>
+            <div class="main-content-wrapper">
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x" data-equalizer>
+                        <div class="cell large-4">
+                            <div class="patient-details box-card" data-equalizer-watch>
+                                <h4>Patient Details</h4>
+                                <div class="name"><span class="new-label">Name:</span> <span>Tom Lopez</span></div>
+                                <div class="name"><span class="new-label">Age:</span> <span>65 years</span></div>
+                                <div class="name"><span class="new-label">Sex:</span> <span>Male</span></div>
+                                <div class="name"><span class="new-label">Blood Type:</span> <span>A +ve</span></div>
+                                <div class="name"><span class="new-label">Address:</span> <span>H.No 18, Alester Colony, MA</span></div>
+
+                                <div class="button-wrap">
+                                    <div class="button-blue">View Medical History</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cell large-8">
+                            <div class="heart-rate-monitor blood-pressure-monitor box-card" data-equalizer-watch>
+                                <div class="heart-rate">84<br><span class="caption">Avg. Heart Rate this hour</span></div>
+
+                                <canvas id="myCanvas"> Your browser does not support the canvas element.</canvas>
+
+                                <div class="message">Normal heart-rate for adults<br>60 - 100</div>
+                            </div>
+                        </div>
+
+                        <div class="cell large-8">
+                            <div class="heart-rate-monitor" data-equalizer-watch>
+                                <div class="blood-pressure">120/80<br><span class="caption">Avg. Heart Rate this hour</span></div>
+
+                                <canvas id="myCanvas">Your browser does not support the canvas element.</canvas>
+                                <div class="message">Normal blood pressure is<br>180/80</div>
+                            </div>
+                        </div>
+
+                        <div class="cell large-4">
+                            <div class="medical-history"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="upcoming-appointments owl-carousel slick-carousel">
-                  <div class="appointment-block-wrap sick-visit">
-                    <div class="overlay-above-button">
-                      <div class="block-top-part">
-                        <h3>Salil Naik</h3>
-                        <p>Sick Visit</p>
-                      </div>
-                      
-                      <div class="block-bottom-part">
-                        <div class="time">2:00pm</div>
-                        <div class="date">20/10/2019</div>
-                      </div>
-                    </div>
-                    
-                    <div class="see-details-button">
-                      See details
-                    </div>
-                  </div>
-
-                  <div class="appointment-block-wrap mental-health">
-                    <div class="overlay-above-button">
-                      <div class="block-top-part">
-                        <h3>Darsh Patel</h3>
-                        <p>Mental Health</p>
-                      </div>
-                      
-                      <div class="block-bottom-part">
-                        <div class="time">3:00pm</div>
-                        <div class="date">20/10/2019</div>
-                      </div>
-                    </div>
-                    
-                    <div class="see-details-button">
-                      See details
-                    </div>
-                  </div>
-
-                  <div class="appointment-block-wrap routine-checkup">
-                    <div class="overlay-above-button">
-                      <div class="block-top-part">
-                        <h3>Sayak</h3>
-                        <p>Routine Checkup</p>
-                      </div>
-                      
-                      <div class="block-bottom-part">
-                        <div class="time">4:00pm</div>
-                        <div class="date">20/10/2019</div>
-                      </div>
-                    </div>
-                    
-                    <div class="see-details-button">
-                      See details
-                    </div>
-                  </div>
-
-                  <div class="appointment-block-wrap sick-visit">
-                    <div class="overlay-above-button">
-                      <div class="block-top-part">
-                        <h3>Injong Won</h3>
-                        <p>Sick Visit</p>
-                      </div>
-                      
-                      <div class="block-bottom-part">
-                        <div class="time">2:00pm</div>
-                        <div class="date">20/10/2019</div>
-                      </div>
-                    </div>
-                    
-                    <div class="see-details-button">
-                      See details
-                    </div>
-                  </div>
-
-                  <div class="appointment-block-wrap mental-health">
-                    <div class="overlay-above-button">
-                      <div class="block-top-part">
-                        <h3>Sayak B</h3>
-                        <p>Mental Health</p>
-                      </div>
-                      
-                      <div class="block-bottom-part">
-                        <div class="time">4:00pm</div>
-                        <div class="date">20/10/2019</div>
-                      </div>
-                    </div>
-                    
-                    <div class="see-details-button">
-                      See details
-                    </div>
-                  </div>
-
-                </div>
-              </section>
             </div>
           </div>
         </div>
@@ -203,20 +146,13 @@
     <script src="node_modules/what-input/dist/what-input.js"></script>
     <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
     <script src="js/app.js"></script>
-    <script src="slick/slick.js"></script>
-
     <script>
-    $(document).ready(function(){
-  $('.slick-carousel').slick({
-    slidesToShow: 2, 
-    slidesToScroll:2,
-    arrows:false,
-    centerPadding: '20px',
-    variableWidth: true,
-    infinite: false
-  });
-});
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.moveTo(0,64);
+        ctx.lineTo(120,100);
+        ctx.lineTo(240,44);
+        ctx.stroke();
     </script>
-    <!-- <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/f834752f-e3a0-4b82-a63f-7ad36aac1532"></iframe> -->
-  </body>
+ </body>
 </html>

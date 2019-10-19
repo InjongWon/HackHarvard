@@ -13,6 +13,7 @@ $green-bg:#2FB300;
 $blue-bg:#278BED;
 
 $ease-animation: 0.4s ease-in-out;
+$transition: all 0.25s ease-out;
 
 h1,h2,h3,h4,h5,h6,p{margin-bottom:0;}
 body{font-family: 'Poppins', sans-serif !important;}
@@ -44,6 +45,37 @@ body{font-family: 'Poppins', sans-serif !important;}
             }
         }
     }
+
+    // .dark-mode-toggle{
+    //     .switch{
+    //         height:30px; width:60px; border-radius:15px; margin-bottom:0;
+    
+    //         .switch-paddle{
+    //             width:60px; height:30px; border-radius:15px; background-color: $inactive-color; 
+    //         }
+    
+    //         .switch-paddle::after{
+    //             width:30px; height:30px; border-radius:15px; background-color: $theme-color; top:0;
+    //         }
+    
+    //         .switch-active, .switch-inactive{
+    //             display:block; left:0;
+    //         }
+    
+    //         input:checked ~ .switch-paddle::after {
+    //             left: 0rem;
+    //         }
+    
+    //         span.icon{
+    //             position:relative; z-index:1; width:30px; height:30px; display:inline-flex; flex-direction:column; justify-content: center; text-align:center; margin:0; float:left;
+    
+    //             svg{display:block; margin:auto;}
+    //         }
+    
+    //         input:checked ~ .switch-paddle svg.moon path{fill:#ffffff; transition: $transition;}
+    //         input:checked ~ .switch-paddle svg.sun path, input:checked ~ .switch-paddle svg.sun rect{fill:$dark-color; transition: $transition}
+    //     }
+    // }
 }
 
 .medium-cell-block-y{overflow-x:hidden;}
@@ -54,7 +86,7 @@ body{font-family: 'Poppins', sans-serif !important;}
 }
 #top-bar{
     background-color:white; height:$top-bar-height;
-    display:flex; flex-direction:row; justify-content: right; padding:0 35px; line-height:$top-bar-height; box-shadow:$box-shadow-two; 
+    display:flex; flex-direction:row; justify-content: right; padding:0 35px; line-height:$top-bar-height; box-shadow:$box-shadow-two; font-weight:500;
 
     .alert-wrap{
         svg{margin-top:23px;margin-right:23px;}
@@ -76,7 +108,15 @@ body{font-family: 'Poppins', sans-serif !important;}
     }
 
     .upcoming-appointments{padding:0 0 0 20px;}
-    .owl-item{margin-right:0 !important;padding:50px 10px !important;}
+    // .owl-item{margin-right:0 !important;padding:50px 10px !important;}
+    .slick-track{padding:50px 0;}
+    .slick-initialized .slick-slide{
+        margin:0px; padding:10px; width:320px;
+    }
+
+    .slick-slide:focus,.slick-slide, .slick-slide div, .slick-slide div div{outline:none;}
+
+    
 
     .appointment-block-wrap{
         height:160px; background-color:white; border-radius:15px; width:320px; box-shadow:$box-shadow-one; color:white; position:relative; transition:$ease-animation; top:0;
@@ -155,4 +195,52 @@ body{font-family: 'Poppins', sans-serif !important;}
     min-height:80px; border-radius:15px; box-shadow: $box-shadow-two; margin:10px 0; display:flex; flex-direction:row; background-color:white; padding:20px 0;
 
     &.for-prescriptions div.column{min-width:100px; flex:1 1 1 2 1; padding:0 20px;}
+}
+
+.symptom-form form{
+    max-width:500px;
+}
+
+.main-content-wrapper{
+    background-color:#F4F7FC;
+    h4{color:$theme-color; font-weight:600; font-size:18px; margin-bottom:20px;}
+
+    .patient-details{height:400px; color:#444444; position:relative;
+        .new-label{font-weight:500; }
+        .name{margin-bottom:10px; display:flex; flex-direction:row;
+            span{flex: 1 1;}
+        }
+
+        .button-wrap{display:flex;flex-direction:row; justify-content: center; width:100%; margin-top:30px;}
+        .button-blue{
+            height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; width:204px; cursor:pointer; margin-bottom:10px;
+        }
+    }
+
+    .heart-rate-monitor{
+         position:relative; background-color:transparent; box-shadow:none;
+
+        .heart-rate{
+            font-size:80px; font-weight:700; position:absolute; bottom:5px; left:0; color:$red-bg; 
+
+            .caption{font-size:16px; font-weight:400; position:absolute; bottom:-5px; left:1; width:200px; color:black}
+        }
+
+        .message{position:absolute; text-align:right; color:$green-bg; right:20px; bottom:0px;}
+
+        #myCanvas{height:300px; width:100%; }
+    }
+
+    .heart-rate-monitor{
+        .blood-pressure{
+            position:absolute; bottom:20px; left:0; font-weight:700;
+            font-size:80px; color:$purple-bg; 
+            span.caption{font-size:16px; color:black; font-weight:400; position:absolute; bottom:-22px; left:1px;}
+        }
+    }
+
+}
+
+.box-card{
+    background-color:white; border-radius:10px; padding:20px 25px; box-shadow:$box-shadow-one; margin:20px 0;
 }
