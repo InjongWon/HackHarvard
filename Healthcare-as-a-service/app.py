@@ -40,19 +40,19 @@ def download_file(filename):
 
 """
 #index
-# def index():
-#     if not session.get('logged_in'):
-#         return render_template('login.html')
-#     elif session['username']=='darsh':
-#         meds =  user.find_one({'username':'darsh'})['meds']
-#         return(render_template('index-p.html', username=session['username'], meds = meds)) #medicine table 
-#     elif session['username']=='doctor':
-#         pt = user.find_one({'username':'darsh'})
-#         meds =  pt['meds']
-#         return(render_template('index-d.html', username=session['username'], meds = meds, pt=pt)) #medicines and paitent detailss 
 @app.route('/')
 def index():
-    return(render_template('index.html'))
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    elif session['username']=='darsh':
+        meds =  user.find_one({'username':'darsh'})['meds']
+        return(render_template('patient-dashboard.html', username=session['username'], meds = meds)) #medicine table 
+    elif session['username']=='doctor':
+        pt = user.find_one({'username':'darsh'})
+        meds =  pt['meds']
+        return(render_template('index.html', username=session['username'], meds = meds, pt=pt)) #medicines and paitent detailss 
+# def index():
+#     return(render_template('index.html'))
 
 
 #P2P Chat
@@ -63,6 +63,22 @@ def chat():
         return render_template('login.html')
     else:
         return(render_template('chat.html'))
+@app.route('/prescriptions')
+def presc():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        pt = user.find_one({'username':'darsh'})
+        visits = pt['visits']
+        return(render_template('prescriptions.html',visits=visits))
+@app.route('/symptoms')
+def symptoms():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        pt = user.find_one({'username':'darsh'})
+        visits = pt['visits']
+        return(render_template('symptoms.html',visits=visits))
 
 
 # Charts
