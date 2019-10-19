@@ -110,7 +110,7 @@ def updatevisit():
 
 
 # Send prescribed apps , Alexa Endpoint 
-@app.route('/api/alexa', methods=['GET'])
+@app.route('/api/alexa/', methods=['GET'])
 def alexa():
     username = 'darsh'
     meds = user.find_one({'username':username})['meds']
