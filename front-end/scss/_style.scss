@@ -16,7 +16,7 @@ $ease-animation: 0.4s ease-in-out;
 $transition: all 0.25s ease-out;
 
 h1,h2,h3,h4,h5,h6,p{margin-bottom:0;}
-body{font-family: 'Poppins', sans-serif !important;}
+body{font-family: 'Poppins', sans-serif !important; background-color:#F4F7FC;}
 
 .sidebar{
     width:240px; 
@@ -26,7 +26,7 @@ body{font-family: 'Poppins', sans-serif !important;}
     display:flex; flex-direction:column; justify-content: space-between;
 
     .logo-container{
-        height:$top-bar-height;
+        height:$top-bar-height;border-bottom:$light-border;
     }
 
     .navigation-links-container
@@ -100,6 +100,7 @@ body{font-family: 'Poppins', sans-serif !important;}
 }
 
 .appointment-group{
+    background-color:#F4F7FC;
     .date-bar{
         height:50px; line-height:50px; padding:0 20px;
         p{line-height: inherit;
@@ -192,9 +193,27 @@ body{font-family: 'Poppins', sans-serif !important;}
 }
 
 .perk-bar{
-    min-height:80px; border-radius:15px; box-shadow: $box-shadow-two; margin:10px 0; display:flex; flex-direction:row; background-color:white; padding:20px 0;
+    min-height:80px; border-radius:10px; border:$light-border; display:flex; flex-direction:row; background-color:white; padding:20px 0; font-size:14px; color:#444444; margin:15px 0; min-width:100px; flex-wrap:wrap;
 
-    &.for-prescriptions div.column{min-width:100px; flex:1 1 1 2 1; padding:0 20px;}
+    &.for-header{font-weight:500; height:30px; border:0; margin:0;padding:0; min-height:0; line-height:30px;}
+
+    div.column{padding:0 20px; flex-basis: 100px;
+        &.desc, &.bt{flex-grow:2;} 
+        &.name{flex-grow:1.3;}
+        &.condition, &.medication{flex-grow:1;}
+
+        .button-blue{margin-bottom:0; width:170px; float:right}
+    }
+
+    &.for-appointments div.column, &.for-appointments.for-header div.column{flex-grow:1;}
+    &.for-appointments{
+        margin:15px 20px;
+        &.for-header{background-color:transparent;}
+    }
+
+    &.for-medical-history, &.for-patient-list, &.for-prescriptions{background-color:#F4F7FC;}
+
+    div.column.prescription, div.column.next-appoinment{font-weight:500;}
 }
 
 .symptom-form form{
@@ -202,26 +221,27 @@ body{font-family: 'Poppins', sans-serif !important;}
 }
 
 .main-content-wrapper{
+    margin-right:20px;
     background-color:#F4F7FC;
     h4{color:$theme-color; font-weight:600; font-size:18px; margin-bottom:20px;}
 
-    .patient-details{height:400px; color:#444444; position:relative;
+    .patient-details{color:#444444; position:relative;
         .new-label{font-weight:500; }
         .name{margin-bottom:10px; display:flex; flex-direction:row;
             span{flex: 1 1;}
         }
 
         .button-wrap{display:flex;flex-direction:row; justify-content: center; width:100%; margin-top:30px;}
-        .button-blue{
-            height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; width:204px; cursor:pointer; margin-bottom:10px;
-        }
+        // .button-blue{
+        //     height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; width:204px; cursor:pointer; margin-bottom:10px;
+        // }
     }
 
     .heart-rate-monitor{
          position:relative; background-color:transparent; box-shadow:none;
 
         .heart-rate{
-            font-size:80px; font-weight:700; position:absolute; bottom:5px; left:0; color:$red-bg; 
+            font-size:80px; font-weight:700; position:absolute; bottom:5px; left:0; color:$green-bg; 
 
             .caption{font-size:16px; font-weight:400; position:absolute; bottom:-5px; left:1; width:200px; color:black}
         }
@@ -234,13 +254,49 @@ body{font-family: 'Poppins', sans-serif !important;}
     .heart-rate-monitor{
         .blood-pressure{
             position:absolute; bottom:20px; left:0; font-weight:700;
-            font-size:80px; color:$purple-bg; 
+            font-size:80px; color:$red-bg; 
             span.caption{font-size:16px; color:black; font-weight:400; position:absolute; bottom:-22px; left:1px;}
         }
+
+        #bpCanvas{height:300px; width:100%;}
+    }
+
+    .symptom-box{
+        h4{color:$theme-color; font-weight:600; font-size:18px; margin-bottom:20px;}
+
+        .name{margin-bottom:10px; display:flex; flex-direction:row;
+            span{flex: 1 1;}
+        }
+
+        .button-wrap{display:flex;flex-direction:row; justify-content: center; width:100%; margin-top:30px;}
+        // .button-blue{
+        //     height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; width:204px; cursor:pointer; margin-bottom:10px;
+        // }
     }
 
 }
 
 .box-card{
     background-color:white; border-radius:10px; padding:20px 25px; box-shadow:$box-shadow-one; margin:20px 0;
+}
+
+.button-blue{
+    height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; cursor:pointer; margin-bottom:10px;
+
+    &:hover{font-weight:500}
+}
+
+.medical-history{
+    form{
+        height:80px; background-color:$theme-light; box-shadow:$box-shadow-two; display:flex; flex-direction:row; justify-content: space-between; padding:20px; border-top:5px solid $theme-color;
+
+        input{background-color:white; border:0; outline:0; box-shadow: none; margin:0; border-radius:5px;
+        
+             &:hover, &:focus{box-shadow:none; outline:0; border:2px solid $theme-color;}
+        }
+
+        // .button-blue{
+        //     height:40px; line-height:40px; background-color:$blue-bg; color:white; text-align:center; padding:0 20px; border-radius:5px; box-shadow: $box-shadow-two; cursor:pointer; margin-bottom:10px;
+        // }
+    }
 }
