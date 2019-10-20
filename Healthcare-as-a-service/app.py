@@ -63,6 +63,13 @@ def chat():
         return render_template('login.html')
     else:
         return(render_template('chat.html'))
+@app.route('/patient-list')
+def pat_list():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return(render_template('paitent-list.html'))
+
 @app.route('/prescriptions')
 def presc():
     if not session.get('logged_in'):
@@ -71,6 +78,7 @@ def presc():
         pt = user.find_one({'username':'darsh'})
         visits = pt['visits']
         return(render_template('prescriptions.html',visits=visits))
+        
 @app.route('/symptoms')
 def symptoms():
     if not session.get('logged_in'):
@@ -92,14 +100,16 @@ def chart():
 
 
 # Historical Records
-@app.route('/past')
+@app.route('/patient-profile')
 def past():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
         pt = user.find_one({'username':'darsh'})
         visits = pt['visits']
-        return(render_template('visits.html',visit=visits,username=session['username']  ))
+
+        print('visits',visits)
+        return(render_template('patient-profile.html',visit=visits,username=session['username'],pt=pt  ))
 
 
 
@@ -165,6 +175,12 @@ def blockchain():
         data.append({'data':block.data,'hash':str(block.hash), 'previous_hash':str(block.previous_hash)})
     return(jsonify(data))
 
+
+
+@app.route('/verify', methods=['GET'])
+def verify():
+    if request.method=='GET':
+        return(render_template('verify.html'))
 
 # Verifies Existance in Blockchain 
 @app.route('/block', methods=['GET', 'POST'])
