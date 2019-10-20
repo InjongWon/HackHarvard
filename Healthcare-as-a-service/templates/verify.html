@@ -117,18 +117,32 @@
                 </form>
             </div>
 
-            <div class="alert green">
-                <p>SUCCESS! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis minus consequuntur porro fuga? Neque delectus explicabo voluptatibus, fugit asperiores magnam!</p>
+            {% if t %}
+            <div class="">
+                <p><b>Verified!   </b> </h4> <br>On Block with index #{{ bindex }} and hash:
+
+                  <br>
+                  {{ bhash }}
+                  <br>
+                 <b>Cost:</b>  {{ t['cost'] }}
+                  <br>
+                  <b>Medicines:</b>   {% for med in t['medicines'] %}  {{ med }}  {% endfor %}
+            </p>
+            {% elif e %}
+            <div class="">
+                <p>FAILURE. Invalid Transaction</p>
             </div>
 
-            <div class="alert red">
-                <p>FAILURE. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis minus consequuntur porro fuga? Neque delectus explicabo voluptatibus, fugit asperiores magnam!</p>
-            </div>
+          {%endif%}
           </div>
+          <a href="/api/blockchain"> <button type="submit" class="button-blue">See Blockchain</button></a>
         </div>
       </div>
     </div>
     </div>
+
+
+
 
     <script src="src/node_modules/jquery/dist/jquery.js"></script>
     <script src="src/node_modules/what-input/dist/what-input.js"></script>

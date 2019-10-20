@@ -186,13 +186,16 @@ def verify():
 @app.route('/block', methods=['GET', 'POST'])
 def block_verify():
     if request.method=='GET':
-        return(render_template('block.html'))
+        return(render_template('verify.html'))
     else:
         txid = request.form['tid']
+        print("got tid", txid)
         for x in range(1,len(blockchain)):
-            if blockchain[x].data['txn']==txid and verify_blockchain(blockchain):  # verifies blockchain integrity 
-                return(render_template('block.html', t=dict(blockchain[x].data), bhash=blockchain[x].hash, bindex=blockchain[x].index))
-        return(render_template('block.html', e='e'))        
+            if blockchain[x].data['txn']==txid and verify_blockchain(blockchain):  
+                print(blockchain[x].data['txn'])
+                # verifies blockchain integrity 
+                return(render_template('verify.html', t=dict(blockchain[x].data), bhash=blockchain[x].hash, bindex=blockchain[x].index))
+        return(render_template('verify.html', e='e'))        
 @app.route('/api/block/<string:txid>', methods=['GET'])
 def block_verify_api(txid):
     for x in range(1,len(blockchain)):
